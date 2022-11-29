@@ -9,6 +9,7 @@ class Recipe(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     recipe_author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    preview_image = db.Column(db.String(2048))
     title = db.Column(db.String(255))
     description = db.Column(db.String(255))
     ingredients = db.Column(db.String)
@@ -20,6 +21,7 @@ class Recipe(db.Model):
         return {
             "id": self.id,
             "recipeAuthorId": self.recipe_author_id,
+            "previewImage": self.preview_image,
             "title": self.title,
             "description": self.description,
             "ingredients": self.ingredients,
