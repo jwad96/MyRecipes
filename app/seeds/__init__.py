@@ -1,5 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .notes import seed_notes, undo_notes
+from .recipes import seed_recipes, undo_recipes
 
 from app.models.db import db, environment, SCHEMA
 
@@ -17,12 +19,15 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_users()
+        undo_notes()
+        undo_recipes()
     seed_users()
-    # Add other seed functions here
-
+    seed_recipes()
+    seed_notes()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    # Add other undo functions here
+    undo_notes()
+    undo_recipes()
