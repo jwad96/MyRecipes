@@ -121,7 +121,7 @@ def edit_recipe(recipe_id):
         if not recipe:
             return json.dumps({"message": "Recipe could not be found"}), 404
 
-        if recipe.recipe_author_id != int(current_user.get_id()):
+        if recipe.recipe_author_id != current_user.id:
             return json.dumps({"message": "authorization required"}), 403
 
         recipe.title = form.data["title"]
@@ -160,7 +160,7 @@ def delete_recipe(recipe_id):
     if not recipe:
         return json.dumps({"message": "Recipe could not be found"}), 404
         
-    if recipe.recipe_author_id != int(current_user.get_id()):
+    if recipe.recipe_author_id != current_user.id:
         return json.dumps({"message": "authorization required"}), 403
 
     db.session.delete(recipe)
