@@ -16,6 +16,7 @@ class Recipe(db.Model):
     steps = db.Column(db.String)
 
     user = db.relationship("User", back_populates="recipes")
+    notes = db.relationship("Note", back_populates="recipe")
 
     def to_dict(self):
         return {
