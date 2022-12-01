@@ -1,0 +1,32 @@
+#navbar-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid gray;
+  width: 100vw;
+  height: 64px;
+  
+}
+
+#navbar-navbar > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#navbar-home-link {
+  position: absolute;
+  left: 100px;
+}
+
+#navbar-right-links {
+  position: absolute;
+  right: 100px;
+  max-width: fit-content;
+}
+
+#navbar-right-links > li {
+  margin-left: 50px;
+}
