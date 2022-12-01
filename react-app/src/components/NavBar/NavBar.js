@@ -4,39 +4,20 @@ import { NavLink } from 'react-router-dom';
 import Modal from 'react-modal'
 import LogoutButton from '../auth/LogoutButton';
 import SignUpForm from '../auth/SignUpForm';
+import { login } from '../../store/session';
 
 import "./NavBar.css";
 
 
 
 const NavBar = () => {
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
 
-  const modalStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'red',
-      color: 'white',
-      borderRadius: '15px',
-    },
-  };
-
-  Modal.setAppElement('#root');
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-
+  const handleDemoSignIn = () => {
+    console.log("hallo");
+    dispatch(login("demo@aa.io", "password"))
+  }
 
   return (
     <nav id="navbar-navbar">
@@ -55,7 +36,7 @@ const NavBar = () => {
         {
           !user && 
           <li>
-            <button>Demo User</button>
+            <button onClick={handleDemoSignIn}>Demo User</button>
           </li>
         }
         {

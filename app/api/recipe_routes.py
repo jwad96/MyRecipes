@@ -24,7 +24,8 @@ def all_recipes():
         parsed_recipe = {
             "recipeId": recipe.id,
             "title": recipe.title,
-            "authorName": recipe.user.username
+            "authorName": recipe.user.username,
+            "previewImage": recipe.preview_image 
         }
         parsed_recipes.append(parsed_recipe)
     return json.dumps(parsed_recipes)
@@ -89,7 +90,7 @@ def create_recipe():
             description = form.data["description"],
             ingredients = form.data["ingredients"],
             steps = form.data["steps"],
-            preview_image = form.data["preview_image"]
+            preview_image = form.data["preview_image"] or "https://images.unsplash.com/photo-1631898040032-da1a5a87d13b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
         )
 
         db.session.add(recipe)
