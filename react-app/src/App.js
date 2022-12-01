@@ -7,7 +7,8 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import HomeSplash from "./components/HomeSplash/HomeSplash"
+import Splash from "./components/HomePage/Splash/Splash"
+import Recipes from "./components/HomePage/Recipes/Recipes";
 import { authenticate } from './store/session';
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
           <LoginForm />
         </Route>
         <Route path='/' exact={true} >
-          <HomeSplash />
+          <Splash />
+          <Recipes />
         </Route>
         <Route path="/sign-up" exact={true} >
           <SignUpForm />

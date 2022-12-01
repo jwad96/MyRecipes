@@ -1,0 +1,29 @@
+.recipe-card {
+  height: 278px;
+  width: 235px;
+  margin-left: 25px;
+  background-color: white;
+  border: 1px solid #f2f3ef
+}
+
+.recipe-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px gray;
+}
+
+.recipe-card-preview {
+  height: 157px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.recipe-card-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.recipe-card-title, .recipe-card-author {
+  margin-top: 10px;
+  margin-left: 10px;
+}
