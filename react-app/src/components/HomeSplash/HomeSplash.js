@@ -2,8 +2,13 @@ import "./HomeSplash.css"
 
 export default function HomeSplash() {
     return (
-        <div id="home-splash">
-            <h1 id="home-splash-header">LET'S GET COOKIN</h1>
-        </div>
+        <>
+            <div id="home-splash">
+                <div id="home-splash-header">
+                    <h1>LET'S GET COOKIN</h1>
+                    <button>SURPRISE ME</button>
+                </div>
+            </div>
+        </>
     )
 }
