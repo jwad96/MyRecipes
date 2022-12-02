@@ -4,6 +4,8 @@ from ..models import db, User, Recipe, Note
 from ..forms import RecipeForm
 from .auth_routes import validation_errors_to_error_messages
 import json
+import random
+
 
 recipe_routes = Blueprint('recipes', __name__)
 
@@ -25,7 +27,7 @@ def all_recipes():
             "recipeId": recipe.id,
             "title": recipe.title,
             "authorName": recipe.user.username,
-            "previewImage": recipe.preview_image 
+            "previewImageURL": recipe.preview_image 
         }
         parsed_recipes.append(parsed_recipe)
     return json.dumps(parsed_recipes)
@@ -168,3 +170,11 @@ def delete_recipe(recipe_id):
     db.session.commit()
 
     return {"message": "recipe successfully deleted"}
+
+# utility routes
+@recipe_routes.get("/random")
+def random_recipe():
+    recipes = Recipe.query.all();
+    return {
+        "recipeId": random.choice(recipes).id
+    }
