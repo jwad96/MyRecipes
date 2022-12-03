@@ -1,5 +1,11 @@
-.recipe-page {
+#recipe-page {
   margin: 0 auto;
   padding: 50px;
   max-width: 1200px;
+}
+
+#recipe-page-recipe-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
 }

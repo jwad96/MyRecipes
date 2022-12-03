@@ -31,7 +31,7 @@ export default function RecipePage() {
     } 
 
     return recipe && (
-        <div className="recipe-page">
+        <div id="recipe-page">
             <Title title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage} description={recipe.description}/>
             <div className="recipe-page-recipe-container">
                 <Ingredients ingredients={recipe.ingredients}/>
