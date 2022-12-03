@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
@@ -9,11 +9,13 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Splash from "./components/HomePage/Splash/Splash"
 import Recipes from "./components/HomePage/Recipes/Recipes";
+import RecipePage from "./components/RecipePage/RecipePage"
 import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     (async() => {
@@ -46,6 +48,12 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
+        <Route path="/recipes/:recipeId">
+          <RecipePage />
+        </Route>
+        <Route>
+          <h1>404</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
