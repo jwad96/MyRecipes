@@ -53,6 +53,9 @@ def recipe_by_id(recipe_id):
         return json.dumps({"message": "recipe could not be found"}), 404
 
     parsed_recipe = recipe.to_dict()
+
+    parsed_recipe["recipeAuthorName"] = recipe.user.username
+
     parsed_notes = []
     for note in recipe.notes:
         parsed_note = note.to_dict()

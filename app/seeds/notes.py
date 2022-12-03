@@ -4,11 +4,11 @@ from app.models import db, Note, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_notes():
     demo_note = Note(
-        note_author_id=1, note_recipe_id= 2 , note='do not burn the potato')
+        note_author_id=1, note_recipe_id= 2 , note='do not burn the sandwich')
     marnie_note = Note(
-        note_author_id=2, note_recipe_id= 3 , note='do not burn the sandwich')
+        note_author_id=2, note_recipe_id= 3 , note='do not burn the burrito')
     bobbie_note = Note(
-        note_author_id=3, note_recipe_id= 1 , note='do not burn the burrito')
+        note_author_id=3, note_recipe_id= 1 , note='do not burn the potato')
 
     db.session.add(demo_note)
     db.session.add(marnie_note)
