@@ -63,6 +63,8 @@ def recipe_by_id(recipe_id):
         parsed_notes.append(parsed_note)
 
     parsed_recipe["notes"] = parsed_notes
+    parsed_recipe["ingredients"] = [ingredient for ingredient in recipe.ingredients.split('\n') if ingredient]
+    parsed_recipe["steps"] = [step for step in recipe.steps.split('\n') if step]
     
     return json.dumps(parsed_recipe)
 
