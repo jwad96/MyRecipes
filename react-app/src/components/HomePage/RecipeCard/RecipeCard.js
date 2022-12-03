@@ -3,7 +3,7 @@ import {useHistory} from "react-router";
 import "./RecipeCard.css"
 
 export default function RecipeCard({title, authorName, previewImageURL, recipeId}) {
-    const backgroundStyle = {"backgroundImage": `url(${previewImageURL})`}
+    const backgroundStyle = {backgroundImage: `url(${previewImageURL})`}
 
     const history = useHistory()
 
