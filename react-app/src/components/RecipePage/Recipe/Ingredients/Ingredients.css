@@ -1,0 +1,5 @@
+#ingredients {
+  grid-column: 1;
+  border-top: 10px solid black;
+  padding-top: 30px;
+}

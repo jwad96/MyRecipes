@@ -33,7 +33,7 @@ export default function RecipePage() {
     return recipe && (
         <div id="recipe-page">
             <Title title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage} description={recipe.description}/>
-            <div className="recipe-page-recipe-container">
+            <div id="recipe-page-recipe-container">
                 <Ingredients ingredients={recipe.ingredients}/>
                 <Procedure procedure={recipe.steps}/>
             </div>

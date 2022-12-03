@@ -2,11 +2,11 @@ import "./Ingredients.css";
 
 export default function Ingredients({ingredients}) {
     return (
-        <ul>
+        <ul id="ingredients">
             {
                 ingredients.map((ingredient) => {
                     return (
-                        <li>
+                        <li key={ingredient} className={"ingredients-ingredient"}>
                             <p>{ingredient}</p>
                         </li>
                     )
