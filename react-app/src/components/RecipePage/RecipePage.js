@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import Title from "./Title/Title"
+import Ingredients from "./Recipe/Ingredients/Ingredients";
+import Procedure from "./Recipe/Procedure/Procedure"
+import Notes from "./Notes/Notes";
 import "./RecipePage.css";
 
 export default function RecipePage() {
@@ -29,7 +32,12 @@ export default function RecipePage() {
 
     return recipe && (
         <div className="recipe-page">
-            <Title title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage}/>
+            <Title title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage} description={recipe.description}/>
+            <div className="recipe-page-recipe-container">
+                <Ingredients ingredients={recipe.ingredients}/>
+                <Procedure procedure={recipe.steps}/>
+            </div>
+            <Notes notes={recipe.notes}/>
         </div>
     )
     
