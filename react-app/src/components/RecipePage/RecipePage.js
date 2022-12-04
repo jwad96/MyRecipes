@@ -1,13 +1,18 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
+import {useSelector} from "react-redux";
 import Title from "./Title/Title"
 import Ingredients from "./Recipe/Ingredients/Ingredients";
 import Procedure from "./Recipe/Procedure/Procedure"
 import Notes from "./Notes/Notes";
+import NoteForm from "./Notes/NoteForm/NoteForm"
 import "./RecipePage.css";
 
 export default function RecipePage() {
     const [recipe, setRecipe] = useState(null)
+    const [recipeNotes, setRecipeNotes] = useState([])
+
+    const user = useSelector(state => state.session.user)
 
     const params = useParams();
     
@@ -22,6 +27,7 @@ export default function RecipePage() {
         })
         .then(result => {
             setRecipe(result)
+            setRecipeNotes(result.notes)
         })
     }, [])
 
@@ -38,8 +44,8 @@ export default function RecipePage() {
                 <Procedure procedure={recipe.steps}/>
             </div>
             <div id="recipe-page-notes-container">
-                <div id="recipe-page-recipe-ratings"></div>
-                <Notes notes={recipe.notes}/>
+                <NoteForm recipeId={params.recipeId} setRecipeNotes={setRecipeNotes}/>
+                <Notes notes={recipeNotes} setRecipeNotes={setRecipeNotes}/>
             </div>
         </div>
     )
