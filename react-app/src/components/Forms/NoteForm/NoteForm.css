@@ -1,0 +1,42 @@
+#note-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: Calc(100vh - 64px);
+}
+
+
+#note-form-2-note {
+  display: block;
+  resize: none;
+  height: 500px;
+  width: 500px;
+  font-size: 20px;
+  padding: 8px;
+}
+
+#note-form-2-submit {
+  display: block;
+  margin: 0 auto;
+  height: 30px;
+  width: 100px;
+  margin-top: 20px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#note-form-2-submit:hover{
+  cursor: pointer;
+  background-color: #222;
+  color: white;
+}
+
+#note-form-counter.green {
+  color: green;
+}
+
+#note-form-counter.red {
+  color: red;
+}
