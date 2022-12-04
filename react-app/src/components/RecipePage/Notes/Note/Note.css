@@ -7,6 +7,14 @@
   padding-bottom: 30px;
 }
 
+.note-icons {
+  position: absolute;
+  left: -20px;
+  top: -8px;
+  display: flex;
+  flex-direction: column;
+}
+
 .note:first-of-type {
   border-top: 1px solid #ccc;
   overflow-wrap: break-word;
@@ -29,11 +37,15 @@
 }
 
 .note-trash {
-  position: absolute;
-  left: -20px;
+  margin-bottom: 10px;
 }
 
 .note-trash:hover {
   color: red;
+  cursor: pointer;
+}
+
+.note-edit:hover {
+  color: turquoise;
   cursor: pointer;
 }

@@ -20,10 +20,10 @@ export default function Notes({notes, setRecipeNotes}) {
         <div id="notes">
             <ul>
                 {
-                  notes.map(({id, note, noteAuthorName, noteAuthorId}) => {
+                  notes.map(({id, note, noteAuthorName, noteAuthorId, noteRecipeId}) => {
                     return (
                       <li key={id}>
-                        <Note id={id} author={noteAuthorName} note={note} noteAuthorId={noteAuthorId} handleDelete={handleDelete}/>
+                        <Note id={id} author={noteAuthorName} note={note} noteAuthorId={noteAuthorId} noteRecipeId={noteRecipeId} handleDelete={handleDelete}/>
                       </li>
                     )
                   })

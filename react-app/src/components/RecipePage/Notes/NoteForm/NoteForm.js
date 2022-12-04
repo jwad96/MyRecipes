@@ -1,10 +1,13 @@
+// TODO: CHANGE NAME TO SOMETHING OTHER THAN FORM
+
+
 import {useState} from "react"
 import {useSelector} from "react-redux"
 import {useHistory, useLocation} from "react-router";
 
 import "./NoteForm.css"
 
-export default function NoteForm({recipeId, setRecipeNotes}) {
+export default function NoteForm({recipeId}) {
     const [note, setNote] = useState("");
     const user = useSelector(state => state.session.user);
 
@@ -17,44 +20,20 @@ export default function NoteForm({recipeId, setRecipeNotes}) {
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const body = {
-            note: note,
-            note_recipe_id: recipeId,
-        }
-
-        fetch(`/api/notes`, {
-            method: "POST",
-            body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(async res => {
-            if (res.ok) {
-                const newNote = await res.json();
-                console.log(newNote);
-                setRecipeNotes(notes => [...notes, newNote])
-                setNote("")
-            }
-        })
+    const handleHereClick = (e) => {
+        history.push(`/recipes/${recipeId}/notes/new`)
     }
 
     return (
         <>
-        <form id="note-form">
+        <div id="note-form">
           <h3 id="note-form-header">Have a helpful note?</h3>
           {   user ? 
-                <>
-                  <textarea id="note-form-field" maxLength={250} value={note} onChange={e => setNote(e.target.value)}></textarea>
-                  <button id="note-form-submit" onClick={handleSubmit}>Submit</button>
-                </>
+                <h3 id="note-form-alt-message">Submit it <button id="note-form-sign-in" onClick={handleHereClick}>Here</button></h3>
               :
-                <p id="note-form-alt-message"><button id="note-form-sign-in" onClick={handleSignIn}>Sign in</button> to post!</p>
+                <h3 id="note-form-alt-message"><button id="note-form-sign-in" onClick={handleSignIn}>Sign in</button> to post!</h3>
           }
-        </form>
+        </div>
         </>
     )
 }

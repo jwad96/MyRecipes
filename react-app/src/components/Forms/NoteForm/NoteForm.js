@@ -26,6 +26,7 @@ export default function NoteForm({edit}) {
         e.preventDefault();
 
         const method = edit ? "PUT" : "POST"
+        const url = edit ? `/api/notes/${params.noteId}` : "/api/notes"
 
         const body = {
             note_recipe_id: params.recipeId,
@@ -33,14 +34,14 @@ export default function NoteForm({edit}) {
         }
         
         if (note.length > 0) {
-            fetch("/api/notes", {
+            fetch(url, {
                 method,
                 body: JSON.stringify(body),
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
-            .then(history.push(`/recipes/${params.recipeId}`))
+            .then(res => history.push(`/recipes/${params.recipeId}`))
         }
     }
 
