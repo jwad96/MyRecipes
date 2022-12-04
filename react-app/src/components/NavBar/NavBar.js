@@ -15,7 +15,6 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const handleDemoSignIn = () => {
-    console.log("hallo");
     dispatch(login("demo@aa.io", "password"))
   }
 

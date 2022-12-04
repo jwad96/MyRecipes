@@ -3,12 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
+import {useHistory, useLocation} from "react-router";
+
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const history = useHistory();
+  const location = useLocation();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -27,6 +32,13 @@ const LoginForm = () => {
   };
 
   if (user) {
+    const params = new URLSearchParams(location.search.slice(1));
+    console.log("******************", location.search);
+    
+    if (params.get('redirectTo')) {
+      return <Redirect to={params.get("redirectTo")} />
+    }
+    
     return <Redirect to='/' />;
   }
 

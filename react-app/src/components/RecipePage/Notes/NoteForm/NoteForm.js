@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {useSelector} from "react-redux"
-import {useHistory} from "react-router";
+import {useHistory, useLocation} from "react-router";
 
 import "./NoteForm.css"
 
@@ -9,10 +9,11 @@ export default function NoteForm({recipeId, setRecipeNotes}) {
     const user = useSelector(state => state.session.user);
 
     const history = useHistory();
+    const location = useLocation()
 
     const handleSignIn = e => {
         e.preventDefault();
-        history.push("/login")
+        history.push(`/login?redirectTo=${location.pathname}`)
     }
 
 
