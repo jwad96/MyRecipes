@@ -1,11 +1,19 @@
 import {useState} from "react"
 import {useSelector} from "react-redux"
+import {useHistory} from "react-router";
 
 import "./NoteForm.css"
 
 export default function NoteForm({recipeId, setRecipeNotes}) {
     const [note, setNote] = useState("");
     const user = useSelector(state => state.session.user);
+
+    const history = useHistory();
+
+    const handleSignIn = e => {
+        e.preventDefault();
+        history.push("/login")
+    }
 
 
     const handleSubmit = (e) => {
@@ -43,7 +51,7 @@ export default function NoteForm({recipeId, setRecipeNotes}) {
                   <button id="note-form-submit" onClick={handleSubmit}>Submit</button>
                 </>
               :
-                <p id="note-form-alt-message"><button id="note-form-sign-in">Sign in</button> to post!</p>
+                <p id="note-form-alt-message"><button id="note-form-sign-in" onClick={handleSignIn}>Sign in</button> to post!</p>
           }
         </form>
         </>
