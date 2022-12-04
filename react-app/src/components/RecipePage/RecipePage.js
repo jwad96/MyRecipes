@@ -37,7 +37,10 @@ export default function RecipePage() {
                 <Ingredients ingredients={recipe.ingredients}/>
                 <Procedure procedure={recipe.steps}/>
             </div>
-            <Notes notes={recipe.notes}/>
+            <div id="recipe-page-notes-container">
+                <div id="recipe-page-recipe-ratings"></div>
+                <Notes notes={recipe.notes}/>
+            </div>
         </div>
     )
     

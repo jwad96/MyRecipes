@@ -1,17 +1,31 @@
+import {useState} from "react";
+import Note from "./Note/Note"
 import "./Notes.css"
 
 export default function Notes({notes}) {
-    console.log(notes);
+  const [recipeNotes, setRecipeNotes] = useState(notes)
+
+  const handleDelete = (noteId) => {
+    return () => {
+      fetch(`/api/notes/${noteId}`, {
+        method: "DELETE"
+      }).then(res => {
+        if (res.ok) {
+          console.log("HELLO")
+          setRecipeNotes(recipeNotes => recipeNotes.filter(x => x.id !== noteId))
+        }
+      })
+    }
+  }
+
     return (
         <div id="notes">
-            <h2>Notes</h2>
             <ul>
                 {
-                  notes.map(({id, note, noteAuthorName}) => {
+                  recipeNotes.map(({id, note, noteAuthorName, noteAuthorId}) => {
                     return (
                       <li key={id}>
-                          <p>{note}</p>
-                          <p>{noteAuthorName}</p>
+                        <Note id={id} author={noteAuthorName} note={note} noteAuthorId={noteAuthorId} handleDelete={handleDelete}/>
                       </li>
                     )
                   })
