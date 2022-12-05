@@ -2,4 +2,14 @@
   grid-column: 2;
   border-top: 10px solid #222;
   padding-top: 30px;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+#procedure-header {
+  text-align: center;
+}
+
+.procedure-step {
+  margin-top: 20px;
 }

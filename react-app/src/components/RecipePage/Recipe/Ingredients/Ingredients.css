@@ -1,5 +1,22 @@
 #ingredients {
   grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-top: 10px solid #222;
   padding-top: 30px;
+  overflow-wrap: break-word;
+  /* overflow: hidden; */
+  min-width: 0;
+}
+
+#ingredients-list {
+  width: 100%;
+}
+
+.ingredients-ingredient {
+  margin-top: 20px;
+  font-size: 20px;
+  overflow-wrap: break-word;
+  min-width: 0;
 }

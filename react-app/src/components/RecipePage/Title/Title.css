@@ -15,10 +15,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 #title-title {
   font-size: 50px;
+  width: 100%;
 }
 
 #title-author {

@@ -148,11 +148,11 @@ export default function RecipeForm({edit}) {
             <form id="recipe-form" onSubmit={handleFormSubmit}>
                 <div className="recipe-form-field-wrapper">
                   <label htmlFor="recipe-form-title">Title{submitted && errors.title ? <span className="recipe-form-error">{errors.title}</span> : ''}</label>
-                  <input type="text" id="recipe-form-title" value={title} onChange={handleChangeTitle}/>
+                  <input type="text" id="recipe-form-title" maxLength={40} value={title} onChange={handleChangeTitle}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
                   <label htmlFor="recipe-form-description">Description{submitted && errors.description ? <span className="recipe-form-error">{errors.description}</span> : ''}</label>
-                  <textarea id="recipe-form-description" value={description} onChange={handleChangeDescription}/>
+                  <textarea id="recipe-form-description" maxLength={1000} value={description} onChange={handleChangeDescription}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
                   <label htmlFor="recipe-form-ingredients">{"Ingredients (newline-separated)"}{submitted && errors.ingredients ? <span className="recipe-form-error">{errors.ingredients}</span> : ''}</label>
