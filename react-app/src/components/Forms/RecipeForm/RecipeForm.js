@@ -10,6 +10,11 @@ export default function RecipeForm({edit}) {
     const [ingredients, setIngredients] = useState("");
     const [steps, setSteps] = useState("")
     const [previewImage, setPreviewImage] = useState("");
+
+    const [recipeAuthorId, setRecipeAuthorId] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const user = useSelector(state => state.session.user)
     
     
     let validationErrors = {
@@ -72,11 +77,14 @@ export default function RecipeForm({edit}) {
                 setIngredients(recipe.ingredients.join('\n'));
                 setSteps(recipe.steps.join('\n'))
                 setPreviewImage(recipe.previewImage);
+                setRecipeAuthorId(recipe.recipeAuthorId);
             }
         }
 
         if (edit) {
-            populate()
+            populate().then(() => setIsLoaded(true))
+        } else {
+            setIsLoaded(true)
         }
     }, [])
 
@@ -133,7 +141,6 @@ export default function RecipeForm({edit}) {
         if (!e.target.value.startsWith("http://") && !e.target.value.startsWith("https://")) {
             setErrors(errors => ({...errors, previewImage: "  Must start with either http:// or https://"}))
         } else if (errors.previewImage) {
-            console.log("we're in the clear?")
             setErrors(errors => {
                 const newErrors = {...errors};
                 delete newErrors.previewImage;
@@ -142,7 +149,15 @@ export default function RecipeForm({edit}) {
         }
     };
 
-    return (
+    if (!user) {
+        return isLoaded && <h1 id="recipe-form-error-header">{`Must be logged in to ${edit ? "edit" : "post"} recipe`}</h1>
+    }
+    
+    if (edit && user && user.id != recipeAuthorId) {
+        return isLoaded && <h1 id="recipe-form-error-header">Must be own recipe to edit</h1>
+    }
+
+    return isLoaded && (
         <div id="recipe-form-wrapper">
             {edit ? <h1>Edit your recipe</h1> : <h1>Submit your recipe</h1>}
             <form id="recipe-form" onSubmit={handleFormSubmit}>

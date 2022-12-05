@@ -33,7 +33,7 @@ export default function RecipePage() {
 
     
     if (recipe && !Object.keys(recipe).length) {
-        return <h1>Recipe not found</h1>
+        return <h1 id="recipe-page-error-header">Recipe not found</h1>
     } 
 
 
