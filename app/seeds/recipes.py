@@ -75,9 +75,6 @@ Spread ½ cup of the refried beans in the center of each tortilla and top each w
 In the skillet, heat 1 tablespoon of the oil over medium. Add 3 burritos seam side down and cook until golden, turning occasionally, 3 to 5 minutes. Transfer to serving plates and repeat with the remaining 1 tablespoon oil and 3 burritos. Serve warm with sour cream and hot sauce on the side.
 '''
 
-demo_description = "hello"
-bobbie_description = "hello"
-marnie_description = "hello"
 
 
 
