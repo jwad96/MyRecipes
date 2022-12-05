@@ -20,7 +20,6 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    console.log("HERE'S YOUR FUCKIN DATA", data);
     if (data) {
       setErrors(data);
     }
@@ -47,11 +46,6 @@ const LoginForm = () => {
     <div id="login-form-wrapper">
       <h2 id="login-form-header">Log In</h2>
       <form id="login-form" onSubmit={onLogin}>
-        <div>
-          {/* {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))} */}
-        </div>
         <div className="login-form-field">
           <label htmlFor='email'>Email{errors.email && <span className="login-form-error">{`  ${errors.email}`}</span>}</label>
           <input
@@ -59,6 +53,8 @@ const LoginForm = () => {
             type='text'
             value={email}
             onChange={updateEmail}
+            required={true}
+            maxLength={255}
           />
         </div>
         <div className="login-form-field">
@@ -68,6 +64,7 @@ const LoginForm = () => {
             type='password'
             value={password}
             onChange={updatePassword}
+            required={true}
           />
           <button id="login-form-submit" type='submit'>Login</button>
         </div>

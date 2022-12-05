@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 import "./SignUpForm.css";
@@ -15,6 +15,14 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const history =  useHistory();
+  const location = useLocation();
+
+  // const params = new URLSearchParams(location.search.slice(1));
+  // if (params.get('redirectTo')) {
+  //   return <Redirect to={params.get("redirectTo")} />
+  // }
+
+  console.log(errors)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -23,6 +31,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(errors => ({...errors, password: "passwords do not match"}))
     }
   };
 
@@ -43,55 +53,62 @@ const SignUpForm = () => {
   };
 
   if (user) {
+    const params = new URLSearchParams(location.search.slice(1));
+    if (params.get('redirectTo')) {
+      return <Redirect to={params.get("redirectTo")} />
+    }
     return  <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    <div id="signup-form-wrapper">
+      <h2 id="signup-form-header">Sign Up</h2>
+      <form id="signup-form" onSubmit={onSignUp}>
+        <div className="signup-form-field-wrapper">
+          <label>User Name{errors.username && <span className="signup-form-error">  {errors.username}</span>}</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+            required={true}
+            maxLength={255}
+          ></input>
+        </div>
+        <div className="signup-form-field-wrapper">
+          <label>Email{errors.email && <span className="signup-form-error">  {errors.email}</span>}</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+            required={true}
+            maxLength={255}
+          ></input>
+        </div>
+        <div className="signup-form-field-wrapper">
+          <label>Password{errors.password && <span className="signup-form-error">  {errors.password}</span>}</label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+            required={true}
+          ></input>
+        </div>
+        <div className="signup-form-field-wrapper">
+          <label>Repeat Password</label>
+          <input
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button id="signup-form-submit" type='submit'>Sign Up</button>
+      </form>
+    </div>
   );
 };
 

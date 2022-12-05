@@ -48,7 +48,7 @@ const NavBar = () => {
         {
           !user && 
           <li>
-            <NavLink to='/sign-up' exact={true}>
+            <NavLink to='/sign-up?redirectTo=${location.pathname}' exact={true}>
               <button id="navbar-signup">Sign Up</button>
             </NavLink>
           </li>
