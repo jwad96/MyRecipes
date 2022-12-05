@@ -48,7 +48,7 @@ export default function NoteForm({edit}) {
     return (
         <div id="note-form-wrapper">
           {edit ? <h1 id="note-form-header">Edit your note</h1> : <h1 id="note-form-header">Submit your note</h1>}
-          <div id="note-form-counter" className={note.length > 0 ? "green" : "red"}>{`${note.length} / 1000`}</div>
+          <div id="note-form-counter" className={note.length > 0 ? "green" : "red"}>{`${note.length} / 1000 ${note.length ? '' : " -- field cannot be empty"}`}</div>
           <form id="note-form-2" onSubmit={handleSubmit}>
               <textarea id="note-form-2-note" maxLength={1000} value={note} onChange={e=>setNote(e.target.value)}/>
               <button id="note-form-2-submit">Submit</button>

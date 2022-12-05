@@ -1,0 +1,61 @@
+#recipe-form-wrapper {
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: Calc(100vh - 64px);
+  color: #222;
+}
+
+#recipe-form {
+  display: flex;
+  flex-direction: column;
+  /* width: fit-content; */
+  padding: 50px;
+  margin-top: 20px;
+  border: 1px solid #222;
+}
+
+.recipe-form-field-wrapper > textarea {
+  resize: none;
+  height: 200px;
+  width: 50vw;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.recipe-form-field-wrapper > input {
+  font-size: 20px;
+  padding: 8px;
+}
+
+.recipe-form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#recipe-form-submit {
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  font-weight: bold;
+  border: 1px solid #222;
+}
+
+#recipe-form-submit:hover {
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.recipe-form-field-wrapper > input,
+.recipe-form-field-wrapper > textarea {
+  border-radius: 3px;
+  border: 1px solid #222;
+}
+
+.recipe-form-error {
+  color: red;
+}
