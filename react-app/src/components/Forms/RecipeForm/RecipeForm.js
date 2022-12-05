@@ -179,7 +179,7 @@ export default function RecipeForm({edit}) {
                 </div>
                 <div className="recipe-form-field-wrapper">
                   <label htmlFor="recipe-form-image">Image URL {submitted && errors.previewImage ? <span className="recipe-form-error">{errors.previewImage}</span> : ''}</label>
-                  <input type="text" id="recipe-form-image" value={previewImage} onChange={handleChangeImage}/>
+                  <input type="text" id="recipe-form-image" maxLength={2048} value={previewImage} onChange={handleChangeImage}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
                     <button id="recipe-form-submit">Submit</button>

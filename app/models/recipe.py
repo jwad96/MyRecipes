@@ -10,7 +10,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     recipe_author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     preview_image = db.Column(db.String(2048))
-    title = db.Column(db.String(255))
+    title = db.Column(db.String(40))
     description = db.Column(db.String(1000))
     ingredients = db.Column(db.String)
     steps = db.Column(db.String)
