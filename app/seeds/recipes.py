@@ -82,7 +82,7 @@ def seed_recipes():
         recipe_author_id=1,
         preview_image ='https://static01.nyt.com/images/2021/11/02/dining/kla-hasselback-potatoes/kla-hasselback-potatoes-master768.jpg?w=1280&q=75',
         title='Potatoes', 
-        description = demo-description, 
+        description = demo_description, 
         ingredients = demo_ingredients, 
         steps = demo_steps)
     marnie_recipe = Recipe(
