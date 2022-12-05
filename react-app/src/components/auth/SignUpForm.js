@@ -72,7 +72,7 @@ const SignUpForm = () => {
             onChange={updateUsername}
             value={username}
             required={true}
-            maxLength={255}
+            maxLength={40}
           ></input>
         </div>
         <div className="signup-form-field-wrapper">
@@ -94,6 +94,7 @@ const SignUpForm = () => {
             onChange={updatePassword}
             value={password}
             required={true}
+            maxLength={40}
           ></input>
         </div>
         <div className="signup-form-field-wrapper">
@@ -104,6 +105,7 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            maxLength={40}
           ></input>
         </div>
         <button id="signup-form-submit" type='submit'>Sign Up</button>
