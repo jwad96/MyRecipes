@@ -82,21 +82,21 @@ def seed_recipes():
         recipe_author_id=1,
         preview_image ='https://static01.nyt.com/images/2021/11/02/dining/kla-hasselback-potatoes/kla-hasselback-potatoes-master768.jpg?w=1280&q=75',
         title='Potatoes', 
-        description = "yummy potatoes", 
+        description = demo-description, 
         ingredients = demo_ingredients, 
         steps = demo_steps)
     marnie_recipe = Recipe(
         recipe_author_id=2, 
         preview_image ='https://static01.nyt.com/images/2020/11/25/dining/23leftoversrex1/merlin_179868645_ccb9d1b4-9544-4368-afa4-c5fa354aa794-master768.jpg?w=1280&q=75', 
         title='Sandwich', 
-        description = "yummy sandwich", 
+        description = marnie_description, 
         ingredients = marnie_ingredients, 
         steps = marnie_steps)
     bobbie_recipe = Recipe(
         recipe_author_id=3, 
         preview_image ='https://static01.nyt.com/images/2022/01/03/dining/kc-bean-and-cheese-burritos/kc-bean-and-cheese-burritos-master768.jpg', 
         title='Burritos', 
-        description = "yummy burritos", 
+        description = bobbie_description, 
         ingredients = bobbie_ingredients, 
         steps = bobbie_steps)
 
