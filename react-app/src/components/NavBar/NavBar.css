@@ -44,3 +44,12 @@
 #navbar-right-links > li {
   margin-left: 50px;
 }
+
+#navbar-user-name {
+  cursor: default !important;  
+}
+
+#navbar-user-name:hover {
+  background-color: white !important;
+  color: #222 !important;
+}

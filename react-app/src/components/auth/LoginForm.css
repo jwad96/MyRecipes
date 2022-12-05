@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: Calc(100vh - 64px);
+  height: Calc(100vh - 114px);
 }
 
 #login-form {

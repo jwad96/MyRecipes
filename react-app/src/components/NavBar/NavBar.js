@@ -32,7 +32,11 @@ const NavBar = () => {
       </NavLink>
       <ul id="navbar-right-links">
         {
-          !user && 
+          user ? 
+          <li>
+            <button id="navbar-user-name">{`Welcome, ${user.username}`}</button>
+          </li>
+          :
           <li>
             <button onClick={handleDemoSignIn}>Demo User</button>
           </li>
@@ -48,7 +52,7 @@ const NavBar = () => {
         {
           !user && 
           <li>
-            <NavLink to='/sign-up?redirectTo=${location.pathname}' exact={true}>
+            <NavLink to={`/sign-up?redirectTo=${location.pathname}`} exact={true}>
               <button id="navbar-signup">Sign Up</button>
             </NavLink>
           </li>
