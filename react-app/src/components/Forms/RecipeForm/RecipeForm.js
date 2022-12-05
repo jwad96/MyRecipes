@@ -34,6 +34,32 @@ export default function RecipeForm({edit}) {
         e.preventDefault();
         setSubmitted(true);
 
+        const method = edit ? "PUT" : "POST"
+        const url = edit ? `/api/recipes/${params.recipeId}` : "/api/recipes"
+
+        const body = {
+            title,
+            description,
+            steps,
+            ingredients,
+            preview_image: previewImage
+        }
+
+        if (!Object.keys(errors).length) {
+            fetch(url, {
+                method,
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(json => {
+                if (json.id) {
+                    history.push(`/recipes/${json.id}`)
+                }
+            })
+        }
     }
 
     useEffect(() => {
@@ -121,23 +147,23 @@ export default function RecipeForm({edit}) {
             {edit ? <h1>Edit your recipe</h1> : <h1>Submit your recipe</h1>}
             <form id="recipe-form" onSubmit={handleFormSubmit}>
                 <div className="recipe-form-field-wrapper">
-                  <label for="recipe-form-title">Title{submitted && errors.title ? <span className="recipe-form-error">{errors.title}</span> : ''}</label>
+                  <label htmlFor="recipe-form-title">Title{submitted && errors.title ? <span className="recipe-form-error">{errors.title}</span> : ''}</label>
                   <input type="text" id="recipe-form-title" value={title} onChange={handleChangeTitle}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
-                  <label for="recipe-form-description">Description{submitted && errors.description ? <span className="recipe-form-error">{errors.description}</span> : ''}</label>
+                  <label htmlFor="recipe-form-description">Description{submitted && errors.description ? <span className="recipe-form-error">{errors.description}</span> : ''}</label>
                   <textarea id="recipe-form-description" value={description} onChange={handleChangeDescription}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
-                  <label for="recipe-form-ingredients">{"Ingredients (newline-separated)"}{submitted && errors.ingredients ? <span className="recipe-form-error">{errors.ingredients}</span> : ''}</label>
+                  <label htmlFor="recipe-form-ingredients">{"Ingredients (newline-separated)"}{submitted && errors.ingredients ? <span className="recipe-form-error">{errors.ingredients}</span> : ''}</label>
                   <textarea id="recipe-form-ingredients" value={ingredients} onChange={handleChangeIngredients}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
-                  <label for="recipe-form-steps">{"Steps (newline-separated)"}{submitted && errors.steps ? <span className="recipe-form-error">{errors.steps}</span> : ''}</label>
+                  <label htmlFor="recipe-form-steps">{"Steps (newline-separated)"}{submitted && errors.steps ? <span className="recipe-form-error">{errors.steps}</span> : ''}</label>
                   <textarea id="recipe-form-steps" value={steps} onChange={handleChangeSteps}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
-                  <label for="recipe-form-image">Image URL {submitted && errors.previewImage ? <span className="recipe-form-error">{errors.previewImage}</span> : ''}</label>
+                  <label htmlFor="recipe-form-image">Image URL {submitted && errors.previewImage ? <span className="recipe-form-error">{errors.previewImage}</span> : ''}</label>
                   <input type="text" id="recipe-form-image" value={previewImage} onChange={handleChangeImage}/>
                 </div>
                 <div className="recipe-form-field-wrapper">
