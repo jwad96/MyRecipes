@@ -9,6 +9,7 @@
 }
 
 #title-title-container {
+  position: relative;
   grid-column: 1;
   grid-row: 1 / span 2;
   display: flex;
@@ -19,14 +20,49 @@
   min-width: 0;
 }
 
+#title-edit {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  width: 50px;
+  border: 1px solid rgb(39, 132, 163);
+  color: rgb(39, 132, 163);
+}
+
+#title-delete {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  padding: 5px;
+  width: 70px;
+  border: 1px solid rgb(230, 81, 81);
+  color: rgb(230, 81, 81);
+}
+
+#title-edit,
+#title-delete {
+  background-color: white;
+}
+
+#title-edit:hover {
+  cursor: pointer;
+  background-color: rgb(39, 132, 163);
+  color: white;
+}
+
+#title-delete:hover {
+  cursor: pointer;
+  background-color: rgb(230, 81, 81);
+  color: white;
+}
+
+
 #title-title {
   font-size: 50px;
-  width: 100%;
+  width: fit-content;
 }
 
-#title-author {
-
-}
 
 #title-image {
   grid-column: 2;

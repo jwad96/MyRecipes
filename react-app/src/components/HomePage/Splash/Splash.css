@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   height: Calc(67vh - 64px);
   width: 100vw;
+  min-width: 1280px;
 }
 
 #home-splash-header {

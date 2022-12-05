@@ -36,9 +36,10 @@ export default function RecipePage() {
         return <h1>Recipe not found</h1>
     } 
 
+
     return recipe && (
         <div id="recipe-page">
-            <Title title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage} description={recipe.description}/>
+            <Title id={recipe.id} authorId={recipe.recipeAuthorId} title={recipe.title} author={recipe.recipeAuthorName} image={recipe.previewImage} description={recipe.description}/>
             <div id="recipe-page-recipe-container">
                 <Ingredients ingredients={recipe.ingredients}/>
                 <Procedure procedure={recipe.steps}/>
