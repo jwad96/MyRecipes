@@ -34,10 +34,10 @@ Personal recipe storage site.
 
 
 ## Landing Page
-![landing page](./landing-page.png)
+![landing page](./landing-page.PNG)
 
 ## Recipe Page
-![recipe page](./recipe-page.png)
+![recipe page](./recipe-page.PNG)
 
 ## Future implementation goals
 * Search feature
