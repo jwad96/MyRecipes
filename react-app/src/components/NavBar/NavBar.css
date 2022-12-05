@@ -3,12 +3,25 @@
   display: flex;
   align-items: center;
   background-color: white;
-  border: 1px solid gray;
   width: 100vw;
   height: 64px;
   box-sizing: border-box;
-  
+  border-bottom: 1px solid #222;
 }
+
+#navbar-navbar button {
+  padding: 5px;
+  background-color: white;
+  color: #222;
+  border: none;
+}
+
+#navbar-navbar button:hover {
+  color: white;
+  border-radius: 4px;
+  background-color: #222;
+}
+
 
 #navbar-navbar > ul {
   display: flex;

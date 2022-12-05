@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import {useHistory, useLocation} from "react-router";
 import Modal from 'react-modal'
 import LogoutButton from '../auth/LogoutButton';
 import SignUpForm from '../auth/SignUpForm';
@@ -13,25 +14,23 @@ import "./NavBar.css";
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
 
   const handleDemoSignIn = () => {
     dispatch(login("demo@aa.io", "password"))
   }
 
+  const handleAddRecipe = () => {
+    history.push("/recipes/new");
+  }
+
   return (
     <nav id="navbar-navbar">
       <NavLink to='/' exact={true} id='navbar-home-link'>
-        Home
+        <button id="navbar-home">Home</button>
       </NavLink>
       <ul id="navbar-right-links">
-        {
-          !user && 
-          <li>
-            <NavLink to='/login' exact={true}>
-              Login
-            </NavLink>
-          </li>
-        }
         {
           !user && 
           <li>
@@ -41,15 +40,23 @@ const NavBar = () => {
         {
           !user && 
           <li>
+            <NavLink to={`/login?redirectTo=${location.pathname}`} exact={true}>
+              <button id="navbar-login">Login</button>
+            </NavLink>
+          </li>
+        }
+        {
+          !user && 
+          <li>
             <NavLink to='/sign-up' exact={true}>
-              Sign Up
+              <button id="navbar-signup">Sign Up</button>
             </NavLink>
           </li>
         }
         {
           user && 
           <li>
-            <button>Add Recipe</button>
+            <button id="navbar-add-recipe" onClick={handleAddRecipe}>Add Recipe</button>
           </li>
         }
         {
